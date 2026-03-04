@@ -1,71 +1,67 @@
-:root {
-  --rosa-neón: #FF3399;
-  --amarillo-limon: #fff000;
-  --azul-turquesa: #00CED1;
-  --blanco-nieve: #FFFFFF;
-}
-
 * {
-  padding: 0;
-  margin: 0;
   box-sizing: border-box;
-}
-
-html {
-  width: 100%;
-  height: 100%;
+  /* Evita que bordes y padding ensanchen las cajas */
+  margin: 0;
+  padding: 0;
 }
 
 body {
   background-color: antiquewhite;
-  font-family: Arial, Helvetica, sans-serif;
+  font-family: Arial, sans-serif;
   text-align: center;
-  max-width: 2000px;
-  height: auto;
+}
+
+header {
+  padding: 40px 20px;
 }
 
 .contenido {
   display: grid;
   width: 90%;
-  margin: 20px auto;
+  max-width: 1200px;
+  /* Ancho máximo para pantallas grandes */
+  margin: 0 auto 40px;
   background-color: lightgreen;
-  padding: 10px;
-  border: 1px solid black;
+  padding: 20px;
+  border: 2px solid black;
+  gap: 20px;
+  /* Espacio automático entre cajas */
+  justify-items: center;
+  /* Centra las cajas en su columna */
 
-  justify-content: center;
-  gap: 15px;
-}
-
-.caja {
-    width: 100px;
-    max-width: 150px;
-    aspect-ratio: 1/1;
-    border: 4px solid black;
-    background-color: lightgray;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-  }
-
-/* RESPONSIVE SIMPLIFICADO */
-
-/* Móvil (por defecto o < 500px) */
-.contenido {
+  /* Por defecto: 2 columnas (móvil) */
   grid-template-columns: repeat(2, 1fr);
 }
 
-/* Tablet (500px a 800px) */
-@media (min-width: 500px) {
+.caja {
+  width: 100%;
+  max-width: 180px;
+  /* Tamaño ideal de la caja */
+  aspect-ratio: 1 / 1;
+  /* Mantiene la forma cuadrada siempre */
+  background-color: lightgray;
+  border: 4px solid black;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 10px;
+}
+
+.caja h2 {
+  font-size: 1rem;
+  /* Texto que no se desborda */
+}
+
+/* TABLET: 4 columnas */
+@media (min-width: 600px) {
   .contenido {
     grid-template-columns: repeat(4, 1fr);
-    padding: 20px;
   }
 }
 
-/* Escritorio (> 800px) */
-@media (min-width: 800px) {
+/* PC: 6 columnas */
+@media (min-width: 900px) {
   .contenido {
     grid-template-columns: repeat(6, 1fr);
-    width: 80%;
   }
 }
