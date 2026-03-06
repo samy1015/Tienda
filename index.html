@@ -18,7 +18,23 @@
     <ul id="lista-carrito"></ul>
     <p>Total: S/. <span id="total">0.00</span></p>
     <button onclick="vaciarCarrito()">Vaciar Carrito</button>
+    <button class="btn-pagar" onclick="finalizarCompra()">Pagar ahora</button>
   </div>
+
+  <!-- Modal para mostrar la imagen directamente -->
+  <div id="modal-pago" class="modal">
+    <div class="modal-contenido">
+        <!-- Contenedor relativo para agrupar imagen y X -->
+        <div class="contenedor-imagen">
+            <span class="cerrar" onclick="cerrarModal()">&times;</span>
+            <img id="imagen-qr" src="img/qr-yape.jpg" alt="Pago QR" class="img-pago">
+        </div>
+
+        <h2>¡Listo para pagar!</h2>
+        <p>Total a pagar: S/. <span id="total-modal">0.00</span></p>
+    </div>
+</div>
+
 
   <section class="contenido">
     <div class="caja">
@@ -110,7 +126,8 @@
       <img src="img/club-social-mantequilla.png" alt="">
       <h2>P/. 1.2</h2>
 
-<button class="btn-agregar" onclick="agregarAlCarrito('Casino Chocolate', 1.20)">Añadir</button>    </div>
+      <button class="btn-agregar" onclick="agregarAlCarrito('Casino Chocolate', 1.20)">Añadir</button>
+    </div>
     <div class="caja">
       <img src="img/club-social-original.png" alt="">
       <h2>S/. 1.2</h2>

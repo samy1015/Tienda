@@ -24,11 +24,14 @@ h1 {
 .contenido {
   display: grid;
   width: 90%;
-  max-width: 1200px; /* Ancho máximo para pantallas grandes */
+  max-width: 1200px;
+  /* Ancho máximo para pantallas grandes */
   margin: 0 auto 40px;
   padding: 20px;
-  gap: 20px; /* Espacio automático entre cajas */
-  justify-items: center; /* Centra las cajas en su columna */
+  gap: 20px;
+  /* Espacio automático entre cajas */
+  justify-items: center;
+  /* Centra las cajas en su columna */
 
   /* Por defecto: 2 columnas (móvil) */
   grid-template-columns: repeat(2, 1fr);
@@ -36,7 +39,8 @@ h1 {
 
 .caja {
   position: relative;
-  overflow: hidden; /* Esto corta cualquier cosa que se salga */
+  overflow: hidden;
+  /* Esto corta cualquier cosa que se salga */
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -51,8 +55,10 @@ h1 {
   width: 100%;
   height: 100%;
   max-height: 170px;
-  object-fit: contain; /* La imagen llena la caja sin deformarse */
-  padding-bottom: 30px; /* Deja espacio abajo para que no tape el texto */
+  object-fit: contain;
+  /* La imagen llena la caja sin deformarse */
+  padding-bottom: 30px;
+  /* Deja espacio abajo para que no tape el texto */
 }
 
 .caja h2 {
@@ -60,7 +66,8 @@ h1 {
   bottom: 0;
   margin: 0;
   width: 100%;
-  background-color: rgba(0, 0, 0, 0.7); /* Fondo oscuro para que se lea bien */
+  background-color: rgba(0, 0, 0, 0.7);
+  /* Fondo oscuro para que se lea bien */
   color: white;
   font-size: 0.9rem;
   text-align: center;
@@ -68,38 +75,111 @@ h1 {
 }
 
 #carrito-contenedor {
-    background: #f2ded2;
-    border: 2px solid #333;
-    padding: 15px;
-    margin: 20px auto;
-    width: 90%;
-    max-width: 400px;
-    border-radius: 10px;
+  background: #f2ded2;
+  border: 2px solid #333;
+  padding: 15px;
+  margin: 20px auto;
+  width: 90%;
+  max-width: 400px;
+  border-radius: 10px;
 }
 
 #lista-carrito {
-    list-style: none;
-    padding: 0;
-    text-align: left;
-    max-height: 150px;
-    overflow-y: auto;
+  list-style: none;
+  padding: 0;
+  text-align: left;
+  max-height: 150px;
+  overflow-y: auto;
 }
 
 .btn-agregar {
-    position: absolute;
-    top: 5px;
-    right: 5px;
-    background: #28a745;
-    color: white;
-    border: none;
-    padding: 5px 10px;
-    border-radius: 5px;
-    cursor: pointer;
-    font-size: 0.7rem;
-    z-index: 10;
+  position: absolute;
+  top: 5px;
+  right: 5px;
+  background: #28a745;
+  color: white;
+  border: none;
+  padding: 5px 10px;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 0.7rem;
+  z-index: 10;
 }
 
-.btn-agregar:hover { background: #218838; }
+.modal {
+  display: none; /* ESTO ES LO MÁS IMPORTANTE: lo mantiene oculto al inicio */
+  position: fixed;
+  z-index: 1000;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0,0,0,0.8); /* Fondo oscuro detrás del modal */
+}
+
+
+
+/* Contenedor para que la X se guíe por la imagen */
+.contenedor-imagen {
+    position: relative;
+    display: inline-block; /* Se ajusta al ancho de la imagen */
+    margin-bottom: 15px;
+}
+
+.img-pago {
+    display: block;
+    max-width: 300px;
+    height: auto;
+    border-radius: 15px;
+    border: 2px solid #eee;
+}
+
+/* La X estilizada y pegada a la imagen */
+.cerrar {
+    position: absolute;
+    top: -10px;    /* Sube un poquito sobre el borde */
+    right: -10px;  /* Sale un poquito hacia la derecha */
+    background-color: #ff3399; /* Tu rosa neón */
+    color: white;
+    width: 35px;
+    height: 35px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 22px;
+    font-weight: bold;
+    cursor: pointer;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.3);
+    z-index: 10;
+    transition: transform 0.2s;
+}
+
+.cerrar:hover {
+    transform: scale(1.2);
+}
+
+
+
+
+
+
+@keyframes zoomIn {
+  from {
+    transform: scale(0.5);
+    opacity: 0;
+  }
+
+  to {
+    transform: scale(1);
+    opacity: 1;
+  }
+}
+
+
+.btn-agregar:hover {
+  background: #218838;
+}
 
 /* TABLET: 4 columnas */
 @media (min-width: 600px) {

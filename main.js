@@ -29,3 +29,24 @@ function vaciarCarrito() {
     carrito = [];
     actualizarInterfaz();
 }
+
+
+function finalizarCompra() {
+    // Si el carrito está vacío, no mostramos nada
+    if (carrito.length === 0) {
+        alert("Tu carrito está vacío.");
+        return;
+    }
+
+    // Seleccionamos el modal por su ID y lo mostramos
+    const modal = document.getElementById('modal-pago');
+    modal.style.display = 'block'; 
+
+    // Actualizamos el total que sale en el modal
+    const totalTexto = document.getElementById('total').textContent;
+    document.getElementById('total-modal').textContent = totalTexto;
+}
+
+function cerrarModal() {
+    document.getElementById('modal-pago').style.display = 'none';
+}
