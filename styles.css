@@ -124,6 +124,7 @@ h1 {
     position: relative;
     display: inline-block; /* Se ajusta al ancho de la imagen */
     margin-bottom: 15px;
+    margin-top: 20px;
 }
 
 .img-pago {
