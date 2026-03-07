@@ -1,6 +1,6 @@
 * {
   box-sizing: border-box;
-  /* Evita que bordes y padding ensanchen las cajas */
+  /* Incluye padding y bordes en el ancho total del elemento */
   margin: 0;
   padding: 0;
 }
@@ -9,38 +9,43 @@ body {
   background-color: #f8f9fa;
   font-family: Arial, sans-serif;
   text-align: center;
+  /* Centra textos y elementos inline por defecto */
 }
 
 header {
-  padding: 10px 20px;
+  padding: 5px 20px;
   background-color: #d6f2d2;
   margin: auto auto 40px auto;
+  /* Centra el header y da margen inferior */
 }
 
 h1 {
   margin: 20px;
 }
 
+/* --- CONTENEDOR PRINCIPAL DE PRODUCTOS --- */
 .contenido {
   display: grid;
+  /* Activa el modo Grid Layout */
   width: 90%;
   max-width: 1200px;
-  /* Ancho máximo para pantallas grandes */
   margin: 0 auto 40px;
+  /* Centra el contenedor horizontalmente */
   padding: 20px;
   gap: 20px;
-  /* Espacio automático entre cajas */
+  /* Separación uniforme entre las tarjetas */
   justify-items: center;
-  /* Centra las cajas en su columna */
 
-  /* Por defecto: 2 columnas (móvil) */
+  /* Móvil: Divide el ancho en 2 columnas iguales */
   grid-template-columns: repeat(2, 1fr);
 }
 
+/* --- TARJETA DE PRODUCTO (CAJA) --- */
 .caja {
   position: relative;
+  /* Permite posicionar elementos internos (como el botón o el título) de forma absoluta */
   overflow: hidden;
-  /* Esto corta cualquier cosa que se salga */
+  /* Oculta cualquier elemento que sobresalga de los bordes redondeados */
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -56,24 +61,26 @@ h1 {
   height: 100%;
   max-height: 170px;
   object-fit: contain;
-  /* La imagen llena la caja sin deformarse */
+  /* Ajusta la imagen sin deformarla ni recortarla */
   padding-bottom: 30px;
-  /* Deja espacio abajo para que no tape el texto */
+  /* Espacio para que el texto inferior no pise la imagen */
 }
 
 .caja h2 {
   position: absolute;
+  /* Lo fija al fondo de la tarjeta */
   bottom: 0;
   margin: 0;
   width: 100%;
   background-color: rgba(0, 0, 0, 0.7);
-  /* Fondo oscuro para que se lea bien */
+  /* Negro con 70% de transparencia */
   color: white;
   font-size: 0.9rem;
   text-align: center;
   padding: 5px 0;
 }
 
+/* --- SECCIÓN DEL CARRITO --- */
 #carrito-contenedor {
   background: #f2ded2;
   border: 2px solid #333;
@@ -86,14 +93,18 @@ h1 {
 
 #lista-carrito {
   list-style: none;
+  /* Quita los puntos de la lista */
   padding: 0;
   text-align: left;
   max-height: 150px;
+  /* Limita la altura para que no crezca infinito */
   overflow-y: auto;
+  /* Agrega scroll vertical si hay muchos productos */
 }
 
 .btn-agregar {
   position: absolute;
+  /* Lo ubica en la esquina superior derecha de la .caja */
   top: 5px;
   right: 5px;
   background: #28a745;
@@ -104,94 +115,93 @@ h1 {
   cursor: pointer;
   font-size: 0.7rem;
   z-index: 10;
+  /* Asegura que esté por encima de la imagen */
 }
 
+/* --- VENTANA MODAL (PAGO) --- */
 .modal {
-  display: none; /* ESTO ES LO MÁS IMPORTANTE: lo mantiene oculto al inicio */
+  display: none;
+  /* Oculto por defecto, se activa con JavaScript */
   position: fixed;
+  /* Fijo en la pantalla aunque hagas scroll */
   z-index: 1000;
+  /* Superpone el modal sobre todo lo demás */
   left: 0;
   top: 0;
   width: 100%;
   height: 100%;
-  background-color: rgba(0,0,0,0.8); /* Fondo oscuro detrás del modal */
+  background-color: rgba(0, 0, 0, 0.8);
+  /* Oscurece el fondo de la web */
 }
 
-
-
-/* Contenedor para que la X se guíe por la imagen */
 .contenedor-imagen {
-    position: relative;
-    display: inline-block; /* Se ajusta al ancho de la imagen */
-    margin-bottom: 15px;
-    margin-top: 20px;
+  position: relative;
+  /* Referencia para el botón "cerrar" */
+  display: inline-block;
+  margin-bottom: 15px;
+  margin-top: 20px;
 }
 
 .img-pago {
-    display: block;
-    max-width: 300px;
-    height: auto;
-    border-radius: 15px;
-    border: 2px solid #eee;
+  display: block;
+  max-width: 300px;
+  height: auto;
+  border-radius: 15px;
+  border: 2px solid #eee;
 }
 
-/* La X estilizada y pegada a la imagen */
+/* BOTÓN DE CERRAR (X) */
 .cerrar {
-    position: absolute;
-    top: -10px;    /* Sube un poquito sobre el borde */
-    right: -10px;  /* Sale un poquito hacia la derecha */
-    background-color: #ff3399; /* Tu rosa neón */
-    color: white;
-    width: 35px;
-    height: 35px;
-    border-radius: 50%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-size: 22px;
-    font-weight: bold;
-    cursor: pointer;
-    box-shadow: 0 2px 8px rgba(0,0,0,0.3);
-    z-index: 10;
-    transition: transform 0.2s;
+  position: absolute;
+  top: -10px;
+  /* Desfase hacia arriba para estilo moderno */
+  right: -10px;
+  /* Desfase hacia la derecha */
+  background-color: #ff3399;
+  /* Rosa neón */
+  color: white;
+  width: 35px;
+  height: 35px;
+  border-radius: 50%;
+  /* Lo hace un círculo perfecto */
+  display: flex;
+  /* Centra la X */
+  align-items: center;
+  justify-content: center;
+  font-size: 22px;
+  font-weight: bold;
+  cursor: pointer;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
+  /* Sombra para dar profundidad */
+  z-index: 10;
+  transition: transform 0.2s;
+  /* Suaviza la animación de hover */
 }
 
 .cerrar:hover {
-    transform: scale(1.2);
+  transform: scale(1.2);
+  /* Crece un 20% al pasar el mouse */
 }
-
-
-
-
-
-
-@keyframes zoomIn {
-  from {
-    transform: scale(0.5);
-    opacity: 0;
-  }
-
-  to {
-    transform: scale(1);
-    opacity: 1;
-  }
-}
-
 
 .btn-agregar:hover {
   background: #218838;
+  /* Verde más oscuro al pasar el mouse */
 }
 
-/* TABLET: 4 columnas */
+/* --- RESPONSIVE DESIGN --- */
+
+/* TABLET: Cuando la pantalla mide más de 600px */
 @media (min-width: 600px) {
   .contenido {
     grid-template-columns: repeat(4, 1fr);
+    /* Cambia a 4 columnas */
   }
 }
 
-/* PC: 6 columnas */
+/* PC: Cuando la pantalla mide más de 900px */
 @media (min-width: 900px) {
   .contenido {
     grid-template-columns: repeat(6, 1fr);
+    /* Cambia a 6 columnas */
   }
 }
