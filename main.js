@@ -24,10 +24,10 @@ function actualizarInterfaz() {
     total = 0; // Reiniciamos el total para volver a sumarlo desde cero
 
     // Recorremos cada elemento del carrito
-    carrito.forEach((item, index) => {
+    carrito.forEach(item => {
         const li = document.createElement('li');
         // toFixed(2) asegura que el precio siempre tenga 2 decimales (ej: 10.00)
-        li.textContent = `${item.producto} - S/. ${item.precio.toFixed(2)}`;
+        li.textContent = `${item.producto} - S/. ${item.precio}`;
         lista.appendChild(li);
 
         // Sumamos el precio de este item al total general
@@ -36,7 +36,7 @@ function actualizarInterfaz() {
 
     // Actualizamos los textos en el HTML
     contador.textContent = carrito.length; // Cantidad de items
-    totalTxt.textContent = total.toFixed(2); // Total con decimales
+    totalTxt.textContent = total; // Total con decimales
 }
 
 /**
