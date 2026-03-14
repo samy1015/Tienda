@@ -2,11 +2,7 @@
 let carrito = []; // Array que almacenará los objetos de productos seleccionados
 let total = 0;    // Variable numérica para el costo acumulado
 
-/**
- * Agrega un nuevo producto al array del carrito
- * @param {string} producto - Nombre del artículo
- * @param {number} precio - Valor numérico del artículo
- */
+
 function agregarAlCarrito(producto, precio) {
     // Añadimos un objeto con los datos del producto al final de la lista
     carrito.push({ producto, precio });
